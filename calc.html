@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head><title>ugly calculater</title></head>
+<body>
+<form name="calc.php" method="GET">
+    <p>
+        <input type="text" name="screen" id="screen" size = 14 />
+    </p>
+    <p>
+		<label for="firstnum">First number:</label>
+		<input type="text" name="a" id="firstnum" size = 8/>
+	</p>
+	<p>
+		<label for="secnum">Second number:</label>
+		<input type="text" name="b" id="secnum" size = 8/>
+	</p>
+	<p>
+		<strong>symbol:</strong>
+		<input type="radio" name="symbol" value="adds" id="adds" /> <label for="adds">adds</label> &nbsp;
+		<input type="radio" name="symbol" value="minus" id="minus" /> <label for="minus">minus</label>
+		<input type="radio" name="symbol" value="times" id="times" /> <label for="times">times</label>
+		<input type="radio" name="symbol" value="divides" id="divides" /> <label for="divides">divides</label>
+
+    </p>
+	<p>
+		<input type="reset" />
+	</p>
+</form>
+
+<script type="text/javascript">
+var adds = document.getElementById('adds');
+var minus = document.getElementById('minus');
+var times = document.getElementById('times');
+var divides = document.getElementById('divides');
+var A = document.getElementById('firstnum');
+var B = document.getElementById('secnum');
+
+adds.addEventListener("click", calc, false );
+minus.addEventListener("click", calc, false );
+times.addEventListener("click", calc, false );
+divides.addEventListener("click", calc, false );
+A.addEventListener("change", calc, false );
+B.addEventListener("change", calc, false );
+
+function calc(){
+    var ret;
+    if (adds.checked){
+        ret = A.value + B.value
+    }else if(minus.checked){
+        ret = A.value - B.value
+    }else if(times.checked){
+        ret = A.value * B.value
+    }else if(divides.checked){
+        if (B.value!=0){
+            ret = A.value / B.value    
+        }
+        
+    }
+
+    document.getElementById('screen').value = ret;
+}
+</script>
+
+</body>
+</html>
